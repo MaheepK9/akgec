@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <img id="myImage" src="photo-1503023345310-bd7c1de61c7d.jpg" alt="My Image">
+    <button id="myButton">Show Image</button>
+    <img id="myimagetwo" src="second image.jpg" alt="">
+    <img id="myimagethird" src="third image.jpg" alt="">
+
+
+
+</body>
+<script>
+    const recognition = new webkitSpeechRecognition();
+recognition.onresult = function(event) {
+  const command = event.results[0][0].transcript.toLowerCase();
+  if (command === "show first image") {
+    document.getElementById("myImage").style.display = "block";
+  }
+  if (command === "show second image") {
+    document.getElementById("myimagetwo").style.display = "block";
+  }
+  if (command === "show third image") {
+    document.getElementById("myimagethird").style.display = "block";
+  }
+
+  
+}
+document.getElementById("myButton").addEventListener("click", function() {
+  recognition.start();
+});
+</script>
+</html>
